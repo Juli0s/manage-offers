@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2021 All Rights Reserved.
+ * https://opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ * Julien_ManageOffers
+ * Julien TRAJMAN <j.trajman@gmail.com> <@Julien0s>
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">offer_form.offer_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Offer Form</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>offer_form</namespace>
+        <dataScope>data.general</dataScope>
+        <deps>
+            <dep>offer_form.offer_form_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="save" class="Julien\ManageOffers\Block\Form\Offer\Save"/>
+            <button name="back" class="Julien\ManageOffers\Block\Form\Offer\Back"/>
+            <button name="delete" class="Julien\ManageOffers\Block\Form\Offer\Delete"/>
+        </buttons>
+    </settings>
+    <dataSource name="offer_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="offer/offer/save"/>
+        </settings>
+        <dataProvider class="Julien\ManageOffers\Ui\DataProvider\OfferDataProvider" name="offer_form_data_source">
+            <settings>
+                <requestFieldName>offer_id</requestFieldName>
+                <primaryFieldName>offer_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+        <!-- Offer ID -->
+        <field name="offer_id" sortOrder="0" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">offer_id</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Entity ID</label>
+                <dataScope>offer_id</dataScope>
+            </settings>
+        </field>
+        <!-- Is Active -->
+        <field formElement="checkbox" name="is_active" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">offer_id</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Enabled?</label>
+                <dataScope>is_active</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <!-- Name -->
+        <field formElement="input" name="name" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">offer_id</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <dataScope>name</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <!-- Image -->
+        <field name="image" formElement="imageUploader" sortOrder="30">
+            <settings>
+                <label translate="true">Image</label>
+                <componentType>imageUploader</componentType>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>2097152</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">offer/uploader/save</param>
+                        </uploaderConfig>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <!-- Link -->
+        <field formElement="input" name="link" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">offer_id</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Link</label>
+                <dataScope>link</dataScope>
+                <validation>
+                    <rule name="validate-url" xsi:type="boolean">true</rule>
+                </validation>
+                <notice translate="true">Use a direct link in order to be redirect</notice>
+            </settings>
+        </field>
+        <!-- Categories -->
+        <field name="categories" component="Magento_Catalog/js/components/new-category" sortOrder="50" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="multiple" xsi:type="boolean">true</item>
+                    <item name="showCheckbox" xsi:type="boolean">true</item>
+                    <item name="disableLabel" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <elementTmpl>ui/grid/filters/elements/ui-select</elementTmpl>
+                <label translate="true">Select Categories</label>
+                <dataScope>categories</dataScope>
+                <componentType>field</componentType>
+                <listens>
+                    <link name="${ $.namespace }.${ $.namespace }:responseData">setParsed</link>
+                </listens>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Catalog\Ui\Component\Product\Form\Categories\Options"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <!-- Start Date -->
+        <field name="start_date" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">offer_id</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Start Date</label>
+                <visible>true</visible>
+                <dataScope>start_date</dataScope>
+            </settings>
+        </field>
+        <!-- End Date -->
+        <field name="end_date" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">offer_id</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">End Date</label>
+                <visible>true</visible>
+                <dataScope>end_date</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

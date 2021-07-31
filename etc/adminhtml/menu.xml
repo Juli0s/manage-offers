@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2021 All Rights Reserved.
+ * https://opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ * Julien_ManageOffers
+ * Julien TRAJMAN <j.trajman@gmail.com> <@Julien0s>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Julien_ManageOffers::management" sortOrder="100" title="Offer Management" module="Julien_ManageOffers" parent="Magento_Backend::content_elements" resource="Julien_ManageOffers::management" translate="title" action="offer/offer/index"/>
+    </menu>
+</config>

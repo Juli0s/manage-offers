@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2021 All Rights Reserved.
+ * https://opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ * Julien_ManagerOffer
+ * Julien TRAJMAN <j.trajman@gmail.com> <@Julien0s>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Catalog\Block\Category\View"
+                   name="category.offer" as="category.offer"
+                   template="Julien_ManageOffers::html/offers.phtml"
+                   before="-">
+                <arguments>
+                    <argument name="backToCategoryVieModel" xsi:type="object">Julien\ManageOffers\ViewModel\GetCategoryOfferViewModel</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

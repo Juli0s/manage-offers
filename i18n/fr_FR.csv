@@ -1,0 +1,37 @@
+"Add New","Ajouter"
+"Are you sure you want to delete a %1 record?","Êtes-vous sûr de vouloir supprimer l'enregistrement %1 ?"
+"Are you sure you want to delete this offer?","Êtes-vous sûr de vouloir supprimer cette offre ?"
+"Back To Grid","Retour à la liste"
+"Could not delete Offer. Original message: {message}","Impossible de supprimer l'offre. Message original : {message}"
+"Could not delete Offer.","Impossible de supprimer l'offre."
+"Could not find Offer with id: `%id`","Impossible de trouver l'offre avec l'id  : `%id`"
+"Could not save Offer. Original message: {message}","Impossible de sauvegarder l'offre. Message original : {message}"
+"Could not save Offer.","Impossible de sauvegarder l'offre."
+"Delete %1","Supprimer %1"
+"Edit Offer","Editer l'offre"
+"End date can't be before start date","La date de fin ne peut pas être avant la date de début"
+"End Date","Date de fin"
+"Entity ID","ID"
+"Manage Offers","Gestion des offres"
+"New Offer","Nouvelle offre"
+"Offer Form","Formulaire de creation d'offre"
+"Offer List","Tableau des offres"
+"Offer Management","Gestion des offres"
+"Select Categories","Selectionnez une ou plusieurs catégories"
+"Start Date","Date de début"
+"The Offer data was saved successfully","Les détails de l'offre ont été sauvegardé avec succès"
+"Use a direct link in order to be redirect","Utiliser un lien pour être redirigé"
+"You have successfully deleted an offer","Vous avez supprimé une offre avec succès"
+Categories,Catégories
+Delete,Supprimer
+Disabled,Inactif
+Edit,Editer
+Enabled,Actif
+Enabled?,"Activer ?"
+General,General
+ID,ID
+Image,Image
+Link,Lien
+Name,Nom
+Offer,Offre
+Save,Sauvegarder

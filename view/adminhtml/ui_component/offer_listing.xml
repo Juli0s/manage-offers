@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2021 All Rights Reserved.
+ * https://opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ * Julien_ManageOffers
+ * Julien TRAJMAN <j.trajman@gmail.com> <@Julien0s>
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">offer_listing.offer_listing_data_source</item>
+            <item name="deps" xsi:type="string">offer_listing.offer_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New</label>
+            </button>
+        </buttons>
+        <spinner>offer_listing_columns</spinner>
+        <deps>
+            <dep>offer_listing.offer_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="offer_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">offer_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Julien_ManageOffers::management</aclResource>
+        <dataProvider class="Julien\ManageOffers\Ui\DataProvider\OfferDataProvider" name="offer_listing_data_source">
+            <settings>
+                <requestFieldName>offer_id</requestFieldName>
+                <primaryFieldName>offer_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="offer_listing_columns">
+        <!-- Offer ID -->
+        <column name="offer_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <!-- Is Active -->
+        <column name="is_active" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Model\Page\Source\IsActive</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="editor" xsi:type="string">select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="label" xsi:type="string" translate="true">Enabled?</item>
+                    <item name="dataScope" xsi:type="string">position</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Name -->
+        <column name="name" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+        <!-- Image -->
+        <column name="image" class="\Julien\ManageOffers\Ui\Component\Listing\Column\ImageOffer"
+                component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="40">
+            <settings>
+                <altField>name</altField>
+                <hasPreview>0</hasPreview>
+                <label translate="true">Image</label>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <!-- Link -->
+        <column name="link" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <label translate="true">Link</label>
+            </settings>
+        </column>
+        <!-- Categories -->
+        <column name="categories" class="\Julien\ManageOffers\Ui\Component\Listing\Column\Categories" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <label translate="true">Categories</label>
+            </settings>
+        </column>
+        <!-- Start Date -->
+        <column name="start_date" sortOrder="70">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">offer_id</item>
+                    <item name="dataScope" xsi:type="string">start_date</item>
+                    <item name="label" xsi:type="string" translate="true">Start Date</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <!-- End Date -->
+        <column name="end_date" sortOrder="80">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">offer_id</item>
+                    <item name="dataScope" xsi:type="string">end_date</item>
+                    <item name="label" xsi:type="string" translate="true">End Date</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" class="Julien\ManageOffers\Ui\Component\Listing\Column\OfferBlockActions">
+            <settings>
+                <indexField>offer_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

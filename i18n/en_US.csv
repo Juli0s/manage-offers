@@ -1,0 +1,34 @@
+"Add New","Add New"
+"Are you sure you want to delete a %1 record?","Are you sure you want to delete a %1 record?"
+"Are you sure you want to delete this offer?","Are you sure you want to delete this offer?"
+"Back To Grid","Back To Grid"
+"Could not delete Offer. Original message: {message}","Could not delete Offer. Original message: {message}"
+"Could not delete Offer.","Could not delete Offer."
+"Could not find Offer with id: `%id`","Could not find Offer with id: `%id`"
+"Could not save Offer. Original message: {message}","Could not save Offer. Original message: {message}"
+"Could not save Offer.","Could not save Offer."
+"Delete %1","Delete %1"
+"Edit Offer","Edit Offer"
+"End date can't be before start date","End date can't be before start date"
+"End Date","End Date"
+"Entity ID","Entity ID"
+"Manage Offers","Manage Offers"
+"New Offer","New Offer"
+"Offer Form","Offer Form"
+"Offer List","Offer List"
+"Offer Management","Offer Management"
+"Select Categories","Select Categories"
+"Start Date","Start Date"
+"The Offer data was saved successfully","The Offer data was saved successfully"
+"Use a direct link in order to be redirect","Use a direct link in order to be redirect"
+"You have successfully deleted an offer","You have successfully deleted an offer"
+Categories,Categories
+Delete,Delete
+Edit,Edit
+Enabled?,Enabled?
+General,General
+ID,ID
+Image,Image
+Link,Link
+Name,Name
+Offer,Offer

@@ -1,0 +1,54 @@
+<?php
+/**
+ * Copyright (c) 2021 All Rights Reserved.
+ * https://opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ * Julien_ManagerOffer
+ * Julien TRAJMAN <j.trajman@gmail.com> <@Julien0s>
+ */
+/** @var \Magento\Catalog\Block\Category\View $block */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Julien\ManageOffers\ViewModel\GetCategoryOfferViewModel $viewModel */
+$viewModel = $block->getData('backToCategoryVieModel');
+$offerBlocksAllowed = $viewModel->getBlockAllowed($block->getCurrentCategory());
+?>
+
+<?php if ($offerBlocksAllowed): ?>
+    <div id="offers-block">
+        <?php foreach ($offerBlocksAllowed as $offerBlock): ?>
+            <div class="offers-block">
+                <?php // Link ?>
+                <?php if ($links = $offerBlock->getLink()): ?>
+                    <a href="<?= $escaper->escapeHtmlAttr($links) ?>">
+                <?php endif ?>
+
+                <?php // Images ?>
+                <?php if ($image = $offerBlock->getImage()): ?>
+                    <img src="<?= $escaper->escapeHtmlAttr($image) ?>"
+                         alt="<?= $escaper->escapeHtmlAttr($offerBlock->getName()) ?>"
+                    />
+                <?php endif; ?>
+
+                <?php // End of Link ?>
+                <?php if ($links): ?>
+                    </a>
+                <?php endif ?>
+            </div>
+        <?php endforeach;?>
+    </div>
+
+    <script>
+        require([
+            'jquery',
+            'slick',
+            'domReady!'
+        ], function ($) {
+            $("#offers-block").slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+        });
+    </script>
+<?php endif; ?>

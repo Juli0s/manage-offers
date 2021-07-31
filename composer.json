@@ -1,0 +1,27 @@
+{
+    "name": "julien/manage-offers",
+    "version": "1.0.0",
+    "description": "N/A",
+    "type": "magento2-module",
+    "author": {
+        "name": "Julien TRAJMAN",
+        "email": "j.trajman@gmail.com",
+        "role": "Developer"
+    },
+    "require": {
+        "php": "~7.4.0",
+        "magento/framework": "103.0.*"
+    },
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Julien\\ManageOffers\\": ""
+        }
+    }
+}

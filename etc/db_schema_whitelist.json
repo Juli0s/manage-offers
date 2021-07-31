@@ -1,0 +1,20 @@
+{
+  "offer": {
+    "column": {
+      "offer_id": true,
+      "is_active": true,
+      "name": true,
+      "image": true,
+      "link": true,
+      "categories": true,
+      "start_date": true,
+      "end_date": true
+    },
+    "index": {
+      "OFFER_OFFER_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  }
+}
