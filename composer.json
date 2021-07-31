@@ -10,7 +10,7 @@
         "role": "Developer"
     },
     "require": {
-        "php": "~7.4.0"
+        "magento/framework": "*"
     },
     "license": [
         "OSL-3.0",
