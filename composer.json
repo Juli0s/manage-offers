@@ -4,13 +4,15 @@
     "minimum-stability": "dev",
     "description": "N/A",
     "type": "magento2-module",
-    "author": {
-        "name": "Julien TRAJMAN",
-        "email": "j.trajman@gmail.com",
-        "role": "Developer"
-    },
+    "author": [
+        {
+            "name": "Julien TRAJMAN",
+            "email": "j.trajman@gmail.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
-        "magento/framework": "*"
+        "php": ">=7.2.0"
     },
     "license": [
         "OSL-3.0",
